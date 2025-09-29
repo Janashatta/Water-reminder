@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Reminder</title>
+    <style> 
+        .container{
+        text-align: center;
+        padding: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+    }  
+    .cups_count{
+        font-size: large;
+        padding: 20px;
+        color: blue;
+    } 
+    button{
+        padding: 10px 20px;
+        margin:10px ;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h1>Water Reminder</h1>
+    <div class="water-counter">
+        <div class="cups_count" >0</div>
+        <p>cups</p>
+    </div>
+    <button id="addbtn">Add Cups</button>
+    <button id="resetbtn">Reset </button>
+    </div>   
+<script>
+    let cups_count=0;
+    const cupsElement=document.querySelector(".cups_count")
+    const addbutton=document.querySelector("#addbtn")
+    const resetbtn=document.querySelector("#resetbtn")
+    function add_cup(){
+        cups_count++;
+        cupsElement.textContent=cups_count;
+        check_daily_goal();
+    }
+    function reset_counter(){
+        cups_count=0;
+        cupsElement.textContent=cups_count;
+        cupsElement.style.color="black";
+    }
+    function check_daily_goal(){
+        if(cups_count>=8){
+            cupsElement.style.color="green";
+            alert("Goal reached !")
+        }
+    }
+    addbutton.addEventListener("click",add_cup);
+    resetbtn.addEventListener("click",reset_counter);
+    </script>
+</body>
+</html>
